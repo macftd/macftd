@@ -1,4 +1,3 @@
-
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
@@ -9,32 +8,17 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        cyber: {
-          green: '#00ff9d',
-          blue: '#00e1ff',
-          dark: '#0a0a0a',
-          gray: '#1a1a1a',
-        }
+        'cyber-dark': '#0a0a0f',
+        'cyber-gray': '#1a1a2e',
+        'cyber-blue': '#16213e',
+        'cyber-green': '#0f3460',
+        'cyber-accent': '#e94560',
       },
       fontFamily: {
-        'arabic': ['Tajawal', 'sans-serif'],
-        'cyber': ['Orbitron', 'monospace'],
-        'sans': ['Roboto Condensed', 'sans-serif'],
+        'arabic': ['var(--font-tajawal)', 'system-ui'],
+        'cyber': ['var(--font-orbitron)', 'monospace'],
+        'condensed': ['var(--font-roboto-condensed)', 'sans-serif'],
       },
-      animation: {
-        'glow': 'glow 2s ease-in-out infinite alternate',
-        'float': 'float 6s ease-in-out infinite',
-      },
-      keyframes: {
-        glow: {
-          '0%': { boxShadow: '0 0 5px #00ff9d, 0 0 10px #00ff9d, 0 0 15px #00ff9d' },
-          '100%': { boxShadow: '0 0 10px #00ff9d, 0 0 20px #00ff9d, 0 0 30px #00ff9d' },
-        },
-        float: {
-          '0%, 100%': { transform: 'translateY(0px)' },
-          '50%': { transform: 'translateY(-20px)' },
-        }
-      }
     },
   },
   plugins: [],
