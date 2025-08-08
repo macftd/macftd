@@ -198,3 +198,169 @@ export default function Hero({ onConsultationClick }: HeroProps) {
     </section>
   )
 }
+'use client'
+
+import { motion } from 'framer-motion'
+import { Shield, ArrowRight, Play, Zap, Lock, Eye } from 'lucide-react'
+
+interface HeroProps {
+  onConsultationClick: () => void
+}
+
+export default function Hero({ onConsultationClick }: HeroProps) {
+  const stats = [
+    { number: '500+', label: 'اختبار اختراق ناجح', label_en: 'Successful Penetration Tests' },
+    { number: '99.9%', label: 'معدل الحماية', label_en: 'Protection Rate' },
+    { number: '24/7', label: 'مراقبة مستمرة', label_en: 'Continuous Monitoring' },
+    { number: '100+', label: 'عميل راضي', label_en: 'Satisfied Clients' }
+  ]
+
+  const floatingIcons = [
+    { icon: Shield, delay: 0 },
+    { icon: Lock, delay: 0.5 },
+    { icon: Eye, delay: 1 },
+    { icon: Zap, delay: 1.5 }
+  ]
+
+  return (
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+      {/* Animated Background */}
+      <div className="absolute inset-0 bg-gradient-to-br from-cyber-dark via-gray-900 to-black">
+        <div className="absolute inset-0 opacity-20">
+          <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-cyber-green/10 rounded-full blur-3xl animate-pulse"></div>
+          <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-cyber-blue/10 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }}></div>
+        </div>
+      </div>
+
+      {/* Floating Icons */}
+      {floatingIcons.map((item, index) => (
+        <motion.div
+          key={index}
+          className="absolute text-cyber-green/30 pointer-events-none"
+          initial={{ y: 100, opacity: 0 }}
+          animate={{ 
+            y: [-20, 20, -20],
+            opacity: [0.3, 0.6, 0.3],
+            rotate: [0, 180, 360]
+          }}
+          transition={{
+            duration: 6,
+            delay: item.delay,
+            repeat: Infinity,
+            ease: "easeInOut"
+          }}
+          style={{
+            top: `${20 + index * 15}%`,
+            left: `${10 + index * 20}%`
+          }}
+        >
+          <item.icon className="w-12 h-12" />
+        </motion.div>
+      ))}
+
+      <div className="container mx-auto px-4 relative z-10">
+        <div className="text-center">
+          {/* Main Heading */}
+          <motion.div
+            initial={{ opacity: 0, y: 50 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            className="mb-8"
+          >
+            <motion.div
+              className="inline-flex items-center space-x-2 rtl:space-x-reverse mb-6 px-4 py-2 bg-cyber-green/10 border border-cyber-green/30 rounded-full"
+              whileHover={{ scale: 1.05 }}
+            >
+              <Shield className="w-5 h-5 text-cyber-green" />
+              <span className="text-cyber-green font-semibold rtl-text">خبراء الأمن السيبراني</span>
+            </motion.div>
+            
+            <h1 className="text-6xl md:text-8xl font-cyber font-bold mb-6">
+              <span className="text-white rtl-text">Project</span>
+              <br />
+              <span className="bg-gradient-to-r from-cyber-green to-cyber-blue bg-clip-text text-transparent">
+                ZeroDay
+              </span>
+            </h1>
+          </motion.div>
+
+          {/* Subtitle */}
+          <motion.p
+            className="text-xl md:text-2xl text-gray-300 mb-12 max-w-4xl mx-auto leading-relaxed rtl-text"
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+          >
+            نحن فريق من خبراء الأمن السيبراني المتخصصين في اختبار الاختراق وحماية الأنظمة الرقمية.
+            <br />
+            <span className="text-cyber-green">احمِ أعمالك قبل أن يستهدفها المخترقون.</span>
+          </motion.p>
+
+          {/* CTA Buttons */}
+          <motion.div
+            className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-16"
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.4 }}
+          >
+            <motion.button
+              onClick={onConsultationClick}
+              className="px-8 py-4 bg-gradient-to-r from-cyber-green to-cyber-blue text-black font-bold rounded-full hover:shadow-lg hover:shadow-cyber-green/50 transition-all duration-300 flex items-center space-x-2 rtl:space-x-reverse group"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              <span className="rtl-text">احجز استشارة مجانية</span>
+              <ArrowRight className="w-5 h-5 group-hover:translate-x-1 rtl:group-hover:-translate-x-1 transition-transform" />
+            </motion.button>
+
+            <motion.button
+              className="px-8 py-4 border-2 border-cyber-green text-cyber-green font-bold rounded-full hover:bg-cyber-green hover:text-black transition-all duration-300 flex items-center space-x-2 rtl:space-x-reverse group"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              <Play className="w-5 h-5" />
+              <span className="rtl-text">شاهد أعمالنا</span>
+            </motion.button>
+          </motion.div>
+
+          {/* Stats */}
+          <motion.div
+            className="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-4xl mx-auto"
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.6 }}
+          >
+            {stats.map((stat, index) => (
+              <motion.div
+                key={index}
+                className="text-center"
+                whileHover={{ scale: 1.1 }}
+              >
+                <div className="text-3xl md:text-4xl font-bold text-cyber-green mb-2">
+                  {stat.number}
+                </div>
+                <div className="text-gray-400 text-sm rtl-text">{stat.label}</div>
+                <div className="text-gray-500 text-xs">{stat.label_en}</div>
+              </motion.div>
+            ))}
+          </motion.div>
+        </div>
+      </div>
+
+      {/* Scroll Indicator */}
+      <motion.div
+        className="absolute bottom-8 left-1/2 transform -translate-x-1/2"
+        animate={{ y: [0, 10, 0] }}
+        transition={{ duration: 2, repeat: Infinity }}
+      >
+        <div className="w-6 h-10 border-2 border-cyber-green rounded-full flex justify-center">
+          <motion.div
+            className="w-1 h-3 bg-cyber-green rounded-full mt-2"
+            animate={{ y: [0, 12, 0] }}
+            transition={{ duration: 2, repeat: Infinity }}
+          />
+        </div>
+      </motion.div>
+    </section>
+  )
+}

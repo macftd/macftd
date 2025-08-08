@@ -2,7 +2,7 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { Shield, Search, Zap, Users, Globe, Lock, Eye, AlertTriangle } from 'lucide-react'
+import { Search, Shield, Users, Eye, AlertTriangle, Lock } from 'lucide-react'
 
 export default function Services() {
   const services = [
@@ -37,16 +37,16 @@ export default function Services() {
       icon: Eye,
       title: 'مراقبة الأمان 24/7',
       title_en: '24/7 Security Monitoring',
-      description: 'مراقبة مستمرة لأنظمتك مع فريق من الخبراء على مدار الساعة',
-      features: ['مراقبة في الوقت الفعلي', 'تنبيهات فورية', 'استجابة سريعة'],
-      color: 'from-purple-500 to-pink-500',
+      description: 'مراقبة مستمرة لأنظمتك مع فريق خبراء للاستجابة السريعة',
+      features: ['مراقبة فورية', 'تنبيهات ذكية', 'تحليل التهديدات'],
+      color: 'from-purple-500 to-pink-400',
       glow: 'shadow-purple-500/30'
     },
     {
       icon: Lock,
-      title: 'استشارات الأمان',
-      title_en: 'Security Consulting',
-      description: 'خدمات استشارية متخصصة لتطوير استراتيجية الأمان الخاصة بشركتك',
+      title: 'تقييم الأمان',
+      title_en: 'Security Assessment',
+      description: 'تقييم شامل لحالة الأمان الحالية وتقديم توصيات للتحسين',
       features: ['تقييم المخاطر', 'خطط الأمان', 'سياسات الحماية'],
       color: 'from-yellow-500 to-orange-400',
       glow: 'shadow-yellow-500/30'
@@ -86,7 +86,9 @@ export default function Services() {
 
   return (
     <section id="services" className="py-20 relative">
-      <div className="container mx-auto px-4">
+      <div className="absolute inset-0 bg-gradient-to-b from-cyber-dark via-gray-900 to-cyber-dark"></div>
+      
+      <div className="container mx-auto px-4 relative">
         <motion.div
           className="text-center mb-16"
           initial={{ opacity: 0, y: -50 }}
@@ -113,25 +115,26 @@ export default function Services() {
             <motion.div
               key={index}
               variants={itemVariants}
-              className="bg-cyber-gray/30 backdrop-blur-sm border border-gray-700 rounded-2xl p-8 hover:border-cyber-green/50 transition-all duration-300 group"
-              whileHover={{ y: -10, scale: 1.02 }}
+              className="bg-cyber-gray/30 backdrop-blur-sm border border-gray-700 rounded-2xl p-8 hover:border-cyber-green/50 transition-all duration-500 group"
+              whileHover={{ y: -5 }}
             >
-              <div className={`w-20 h-20 bg-gradient-to-br ${service.color} rounded-2xl flex items-center justify-center mb-6 ${service.glow} hover:shadow-lg transition-all duration-300 group-hover:animate-pulse`}>
-                <service.icon className="w-10 h-10 text-white" />
+              <div className={`w-16 h-16 rounded-full bg-gradient-to-r ${service.color} p-4 mb-6 group-hover:scale-110 transition-transform duration-300`}>
+                <service.icon className="w-full h-full text-white" />
               </div>
 
-              <h3 className="text-2xl font-bold mb-4 rtl-text text-white group-hover:text-cyber-green transition-colors">
+              <h3 className="text-2xl font-bold text-white mb-2 rtl-text">
                 {service.title}
               </h3>
+              <p className="text-gray-400 text-sm mb-1">{service.title_en}</p>
               
               <p className="text-gray-300 mb-6 rtl-text leading-relaxed">
                 {service.description}
               </p>
 
-              <div className="space-y-3">
+              <div className="space-y-3 mb-6">
                 {service.features.map((feature, idx) => (
                   <div key={idx} className="flex items-center space-x-3 rtl:space-x-reverse">
-                    <div className="w-2 h-2 bg-cyber-green rounded-full"></div>
+                    <div className="w-2 h-2 rounded-full bg-cyber-green"></div>
                     <span className="text-gray-400">{feature}</span>
                   </div>
                 ))}
@@ -156,17 +159,12 @@ export default function Services() {
           transition={{ delay: 0.5, duration: 0.8 }}
           viewport={{ once: true }}
         >
-          <p className="text-gray-400 mb-6">معتمدون من أكبر المؤسسات العالمية</p>
+          <p className="text-gray-400 mb-8 rtl-text">معتمدون من أفضل المؤسسات العالمية</p>
           <div className="flex justify-center items-center space-x-12 rtl:space-x-reverse opacity-60">
-            {['ISO 27001', 'CEH', 'CISSP', 'OSCP', 'CISM'].map((cert, index) => (
-              <motion.div
-                key={index}
-                className="bg-gray-800 px-4 py-2 rounded-lg border border-gray-700"
-                whileHover={{ scale: 1.1, borderColor: '#00ff9d' }}
-              >
-                <span className="text-cyber-green font-cyber font-semibold">{cert}</span>
-              </motion.div>
-            ))}
+            <div className="text-2xl font-bold text-cyber-green">ISO 27001</div>
+            <div className="text-2xl font-bold text-cyber-blue">CEH</div>
+            <div className="text-2xl font-bold text-yellow-400">CISSP</div>
+            <div className="text-2xl font-bold text-purple-400">OSCP</div>
           </div>
         </motion.div>
       </div>
